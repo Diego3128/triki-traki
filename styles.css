@@ -1,12 +1,13 @@
 *, ::before, ::after{
     box-sizing: border-box;
-    outline: 1px solid rebeccapurple;
+    /* outline: 1px solid rebeccapurple; */
 }
 :root{
     --black: #000000;
     --pink: #F72798;
     --orange: #F57D1F;
     --yellow: #EBF400;
+    --white : #ffffff;
 }
 body{
     background: var(--black);
@@ -22,4 +23,26 @@ body{
     margin: 0 auto;
     height: 100dvh;
     background: var(--bg-color);
+}
+.initial__title{
+    font-size: 2.7rem;
+    margin: 0;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 3px var(--yellow);
+
+}
+.button{
+    display: inline-block;
+    font-family: inherit;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--yellow);
+    border-radius: 10px;
+    outline: 6px outset var(--white);
+    border: 3px outset var(--black);
+}
+.button:hover{
+    cursor: pointer;
+    outline: 7px outset var(--white);
 }
