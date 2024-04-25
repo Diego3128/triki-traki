@@ -8,6 +8,9 @@
     --orange: #F57D1F;
     --yellow: #EBF400;
     --white : #ffffff;
+    --purple: rgb(102, 51, 153);
+    --figure-shadow: 1px 1px 8px var(--pink);
+
 }
 body{
     background: var(--black);
@@ -19,11 +22,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: min(80%, 600px);
+    width: min(85%, 800px);
     margin: 0 auto;
     height: 100dvh;
     background: var(--bg-color);
 }
+/* initial scrren */
 .initial__title{
     font-size: 2.7rem;
     margin: 0;
@@ -45,4 +49,80 @@ body{
 .button:hover{
     cursor: pointer;
     outline: 7px outset var(--white);
+}
+/* game scrren */
+
+.game__title,
+.modal__title {
+    font-size: 2rem;
+}
+.game__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: min(70vw, 300px );
+    height: min(70vw, 300px );
+    border: 4px outset var(--purple);
+}
+/* cells */
+.game__cell{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    width: 33%;
+    outline: 2px solid var(--purple);
+
+}
+.cross::before,
+.cross::after{
+    content: '';
+    position: absolute;
+    height: min(2vw, 10px);
+    width: 80% ;
+    border-radius: 10px;
+    margin: auto;
+    background-color: var(--pink);
+    outline: rebeccapurple 2px outset;
+    box-shadow: var(--figure-shadow)
+}
+.cross::before{
+    transform: rotate(45deg);
+}
+.cross::after{
+    transform: rotate(-45deg);
+}
+/* circle */
+.circle::before,
+.circle::after{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    margin: auto;
+    outline: rebeccapurple 2px outset;
+}
+.circle::before{
+    background-color: var(--pink);
+    width: 70%;
+    height: 70%;
+    box-shadow: var(--figure-shadow);
+}
+.circle::after{
+    width: 30%;
+    height: 30%;
+    background-color: var(--black);
+    box-shadow: inset var(--figure-shadow);
+}
+.title{
+    margin-bottom: 90px;
+}
+
+/* modal */
+.modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform: scale(0);
+    border: 3px red solid;
 }
