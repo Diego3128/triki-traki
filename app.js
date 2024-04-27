@@ -35,40 +35,46 @@ document.addEventListener('DOMContentLoaded', function(){
         createCells();
     }
     // show result
-    function showResult(winner) {
+    function showResult(winner, winningCells) {
         gameContainer.removeEventListener('click', catchCell);
-        // i want so charge with a delay the result:
+        if(winningCells){
+            for(let i = 0; i < winningCells.length; i++){
+                winningCells[i].classList.add(`${winner}-winner`);
+            }
+        }
+        // Delay the result:
         setTimeout(()=>{
-            
             gameScreen.classList.add(hideGame);
             finalResultScreen.classList.remove(hideResult);
             let resultTitle = document.querySelector('.modal__title');
 
             if(winner === 'circle' || winner === 'cross'){
-            resultTitle.innerText = `The winner is the ${winner}!`;
+                resultTitle.innerText = `The winner is the ${winner}!`;
             }else{
                 resultTitle.innerText = `It's a tie!`;
             }
-        }, 2000);
+        }, 5000);
     }
     // check if there's a winner
     function checkPlayer(gameCell){
         let shapeClass = gameCell.classList.contains('cross') ? 'cross' : 'circle';
         const cells = gameContainer.querySelectorAll('.game__cell');
         let numOfClasses = 0;
-
+        let winningCells = [];
         for(let i = 0; i < winningPositions.length; i++){
             let array = winningPositions[i];
             for(let j = 0; j < array.length; j++){
                 if(cells[array[j]].classList.contains(shapeClass)){
                     numOfClasses++;
+                    winningCells.push(cells[array[j]]);
                 }
             }
             if(numOfClasses === 3){
-                showResult(shapeClass);
+                showResult(shapeClass, winningCells);
                 return true;
             }else{
                 numOfClasses = 0;
+                winningCells.length = 0;
             }
         }
         if(numOfClasses === 0) return false;
@@ -139,10 +145,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
     reStartGame.addEventListener('click', restoreGame);
 });//domcontentloaded
-
-
-console.log('add animations');
-console.log('create box shadow for the text');
-console.log('box shadow when there is a winner');
-console.log('animation to the shapes');
 
