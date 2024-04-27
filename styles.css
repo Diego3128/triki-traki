@@ -6,8 +6,6 @@
     --black: #000000;
     --pink-text: #f72799b8;
     --pink-bg: #f72799b8;
-    --orange: #F57D1F;
-    --yellow: #EBF400;
     --white : #ffffff;
     --purple: rgba(102, 51, 153);
     --figure-color: transparent;
@@ -44,35 +42,41 @@ body{
 
 }
 /* initial scrren */
-.initial__title{
-    font-size: 2.9rem;
-    margin: 0;
-    margin-bottom: 60px;
-    text-shadow: 2px 2px 3px var(--yellow);
-
-}
 .button{
     display: inline-block;
     font-family: inherit;
     padding: 10px 30px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    background-color: var(--yellow);
     border-radius: 10px;
-    outline: 6px outset var(--white);
+    outline: 6px outset var(--pink-bg);
     border: 3px outset var(--black);
+    background-color: var(--figure-color);
+    color: var(--pink-text);
+    box-shadow: 0px 5px 15px 5px var(--pink-bg);
+    animation: buttonEffect 2s infinite alternate;
 }
 .button:hover{
     cursor: pointer;
-    outline: 7px outset var(--white);
+    outline: 7px outset var(--purple);
+    color: var(--purple);
 }
-/* game scrren */
-
+/* titles */
+.title{
+    margin-bottom: 90px;
+    text-shadow: 0px 8px 20px var(--purple), 3px 2px 1px var(--purple);
+    animation: textShadowEffect 2.2s infinite alternate-reverse ;
+    text-align: center;
+}
+.initial__title{
+    font-size: 2.9rem;
+}
 .game__title,
 .modal__title {
     font-size: 2.2rem;
-    text-shadow: 0px 8px 15px var(--purple);
 }
+
+/* game scrren */
 .game__container{
     display: flex;
     flex-wrap: wrap;
@@ -81,13 +85,9 @@ body{
     height: min(70vw, 300px );
     border: 4px outset var(--purple);
     border-radius: 5px;
-}
-/* shadow effect */
-.game__shadow{
     box-shadow: var(--game-container-shadow-1);
     animation: changeShadow 2s ease-in-out infinite alternate-reverse;
 }
-
 /* cells */
 .game__cell{
     display: flex;
@@ -167,11 +167,6 @@ body{
     outline: var(--purple) 2px outset;
 }
 
-.title{
-    margin-bottom: 90px;
-}
-
-
 @keyframes changeShadow {
     100%{
         box-shadow: var(--game-container-shadow-2);
@@ -195,5 +190,17 @@ body{
     to{
         transform:rotate(-45deg) scale(.95);
     
+    }
+}
+@keyframes buttonEffect {
+    to{
+        outline: 7px outset var(--purple);
+        color: var(--purple);
+        box-shadow: 0px 5px 15px 5px var(--purple);
+    }
+}
+@keyframes textShadowEffect {
+    to{
+        text-shadow: 0px 8px 20px var(--pink-bg), 3px 2px 1px var(--pink-bg); 
     }
 }
